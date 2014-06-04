@@ -27,8 +27,16 @@
 ?>
 <?php
 
+include '/var/www/arduino_robot/App/Core/Core.php';
 
 
+
+$options['varsion']=true;
+
+$engine=new App_Core_Core($options);
+
+
+echo $engine->error();
 
 
 

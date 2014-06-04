@@ -1,10 +1,10 @@
 <?php
 
 /**
- *
+ * Brain is a feature that
  * 
  */
-class App_Core_Core { 
+class App_Core_Brain { 
     
     /*
      * @param array $arguments;
@@ -32,36 +32,39 @@ class App_Core_Core {
         
     }
     
-    public function error(){
+    public function desicion(){
         return "Error";
     }
     
-    public function controllerEngine(){
+    
+    public function objective(){
         
     }
     
-    public function observerEngine(){
+    public function will(){
+        
         
     }
     
-    public function controlActionEngine(){
+    public function logic(){
         
     }
     
-    public function manualEngine(){
+    public function like(){
+        
+        
+        
+    }
+   
+    public function sense(){
+        
         
     }
     
-    public function autoEngine(){
+    public function knowledge(){
+        
         
     }
-    
-    public function memoryEngine(){
-        
-    }
-    
-    public function learnEngine(){
-        
-    }
+
   
 } 
