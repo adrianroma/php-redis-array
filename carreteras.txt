@@ -1,0 +1,126 @@
+1|Carretera-Federal-1|Carretera Transpeninsular|Tijuana, BC - Ensenada, BC - La Paz, BCS - Cabo San Lucas, BCS
+1d|Carretera-Federal-1D|||Tijuana, BC - Ensenada, BC
+|Carretera-Federal-2|        Carretera-Federal-2|||Tijuana, BC - Cananea, SON - El Porvenir, CHIH; Ciudad Acuña, COAH - Playa Lauro Villar, TAMPS
+2d|Carretera-Federal-2D|||Tijuana, BC - La Rumorosa, BC; Río Bravo, TAMPS - Carretera-Federal-2, TAMPS
+3|Carretera-Federal-3|Ensenada, BC - Mexicali, BC - San Felipe, BC
+4|Carretera-Federal-4|Ocoyoacac, MEX - Malinalco, MEX
+5|Carretera-Federal-5|Mexicali, BC - Puertecitos, BC
+||Carretera-Federal-5D|Peñón, MEX - Texcoco, MEX
+8|Carretera-Federal-8|Puerto Peñasco, SON - Sonoyta, SONORA
+9|Carretera-Federal-9|Cadereyta, NL - Allende, NL
+10|Carretera-Federal-10|Carretera-Federal-45 - Carretera-Federal-2
+12|Carretera-Federal-12|Ensenada, BC - Bahia de los Angeles, BC
+14|Carretera-Federal-14|Moctezuma, SON - Carretera-Federal-37 en Uruapan, MICH
+15|Carretera-Federal-15|México, DF-Nogales, SON
+22|Carretera-Federal-22|San Carlos, BC - Ciudad Constitución, BC
+23|Carretera-Federal-23|Guachochi, CHIH - Basaseachic, CHIH; Guanaceví, DGO – San Francisco del Mezquital, DGO; Fresnillo, ZAC - Chapala, JAL
+24|Carretera-Federal-24|Nuevo Palomas, CHIH – Guadalupe y Calvo, CHIH; Tameapa, SIN - Pericos, SIN
+25|Carretera-Federal-25|Aguascalientes, AGS, AGS - Loreto, ZAC
+28|Carretera-Federal-28|San Salvador el Seco, PUE - Azumbilla, PUE
+29|Carretera-Federal-29|Ciudad Acuña, COAH - Villa Unión, COAH
+30|Carretera-Federal-30|El Palmito, DGO - Sabinas Hidalgo, NL; Parás, NL - Linares, NL
+34|Carretera-Federal-34|San Antonio, DGO - Cuatillos, DGO
+35|Carretera-Federal-35|China - Montemorelos, NL ; Santa Rosa, JAL - Zamora, MICH
+37|Carretera-Federal-37|León, GTO - Playa Azul, MICH
+40|Carretera-Federal-40|Mazatlán, SIN - Reynosa, TAMPS
+40D|Carretera-Federal-40D|Carretera-Federal-15D, SIN - Carretera Estatal Sinaloa 1, SIN; El Salto, Durango, DGO - Reynosa, TAMPS
+||Carretera-Federal-M-40|Carretera-Federal-57, HGO - Carretera-Federal-150, PUE
+41|Carretera-Federal-41|Quiroga, MICH - Tacámbaro de Codallos, MICH
+43|Carretera-Federal-43|Salamanca, GTO - Morelia, MICH
+44|Carretera-Federal-44|Fresnillo, ZAC - Valparaiso; Guadalajara, JAL - Chapala , JAL
+45|Carretera-Federal-45|Ciudad Juárez, CHIH - Panales, HGO
+49|Carretera-Federal-49|Jiménez, CHIH - San Luis Potosí, SLP
+49D|Carretera-Federal-49D|Jiménez, CHIH - Cuencamé, DGO
+51|Carretera-Federal-51|Iguala, GRO - Ojuelos de Jalisco, JAL
+52|Carretera-Federal-52|Yuriria, GTO - Salvatierra, GTO
+53|Carretera-Federal-53|Monclova, COAH - Monterrey, NL
+54|Carretera-Federal-54|Ciudad Mier, TAMPS - Tecomán, COL
+55|Carretera-Federal-55|Carretera-Federal-57, MEX - Carretera-Federal-95, GRO
+57|Carretera-Federal-57|México, DF - Piedras Negras, COAH
+61|Carretera-Federal-61|Yuriria, GTO - Maravatío, MICH
+||Carretera-Federal-62|San Tiburcio, ZAC - Matehuala, SLP
+||Carretera-Federal-63|La Bonita, SLP - Entronque Ahualulco, SLP
+||Carretera-Federal-64|Carretera-Federal-80, JAL – Carretera-Federal-90, GTO
+||Carretera-Federal-66|Ribiera, NAY - San Marcos, NAY
+||Carretera-Federal-68|Acaponeta, NAY - Playa Novillero, NAY
+||Carretera-Federal-69|Río Verde, SLP - Jalpan, QRO
+Carretera-Federal-70|Carretera-Federal-70|Manzanillo, COL - Tampico, TAMPS
+||Carretera-Federal-71|Luis Moya, ZAC - La Barca, JAL
+||Carretera-Federal-72|La Boca del Cachimín, NAY - Santiago Ixcuintla, NAY
+||Carretera-Federal-76|San Blas, NAY - Tepic, NAY
+||Carretera-Federal-78|Mexcaltitlán, NAY – Carretera-Federal-72
+||Carretera-Federal-80|Barra de Navidad, JAL - Tampico, TAMPS
+||Carretera-Federal-81|Guayalejo, TAMPS – Estación González, TAMPS
+||Carretera-Federal-82|Carretera-Federal-190, PUE - Tlapa de Comonfort, GRO
+||Carretera-Federal-84|San Ignacio Cerro Gordo, JAL - Salamanca, GTO
+Carretera-Federal-85 Mexico|Carretera-Federal-85|México - Nuevo Laredo, TAMPS
+||Carretera-Federal-90|Zapotlanejo, JAL - Irapuato, GTO
+||Carretera-Federal-93|Chilpancingo, GRO - Tlapa de Comonfort, GRO
+Mexico Federal Highway 95|Carretera-Federal-95|México, D. F. - Acapulco, GRO
+Carretera-Federal-95D|Autopista México-Cuernavaca, Autopista del Sol|México, D. F. - Acapulco, GRO
+|Carretera-Federal-97|Reynosa, TAMPS - Ampliación la Loma, TAMPS
+|Carretera-Federal-98|Minatitlán, COL - Manzanillo, COL
+|Carretera-Federal-100|Colima, COL - Manzanillo, COL
+Carretera-Federal-101|Carretera-Federal-101|Matamoros, TAMPS - Carretera-Federal-80, SLP
+|Carretera-Federal-102|Tamazunchale, SLP - Carretera-Federal-127, VER
+|Carretera-Federal-103|Carretera-Federal-166, MOR - Carretera-Federal-95, MOR
+Carretera-Federal-105|Carretera-Federal-105|Carretera-Federal-127, VER - Pachuca, HGO
+|Carretera-Federal-106|Tenango, MEX - Tres Marías, MOR
+|Carretera-Federal-110|Tecomán, COL - Cañada de Moreno, GTO
+|Carretera-Federal-111|San Miguel de Allende, GTO – El Colorado, QRO
+|Carretera-Federal-113|México, DF - Oaxtepec, MOR
+|Carretera-Federal-115|México, DF - Cuautla, MOR
+|Carretera-Federal-116|Grutas de Cacahuamilpa, GRO – Jojutla, MOR.
+|Carretera-Federal-117|San Martín Texmelucan, PUE - Tlaxcala, TLAX
+|Carretera-Federal-119|Carretera-Federal-130, PUE - Puebla, PUE
+|Carretera-Federal-120|Carretera-Federal-85, SLP - La Placita de Morelos, MICH
+|Carretera-Federal-121|Puebla, PUE - Apizaco, TLAX
+|Carretera-Federal-123|Orizaba, VER - Zongolica, VER
+|Carretera-Federal-125|Cardel, VER, VER – Pinotepa Nacional, OAX
+|Carretera-Federal-126|Morelia, MICH - México, DF
+|Carretera-Federal-127|Carretera-Federal-70, VER – Carretera-Federal-129, VER
+|Carretera-Federal-128|Tlapacoyan, VER - Casitas, VER
+|Carretera-Federal-129|Puebla de Zaragoza, PUE - Nautla, VER
+|Carretera-Federal-130|Pachuca, HGO - Tuxpan, VER
+|Carretera-Federal-131|Tlapacoyan, VER – Perote, VER
+|Carretera-Federal-132|Ecatepec de Morelos, MEX - Tulancingo, HGO
+|Carretera-Federal-134|Naucalpan, MEX – Zihuatanejo, GRO
+|Carretera-Federal-135|Tehuacán, PUE - Puerto Escondido, OAX
+|Carretera-Federal-136|Texcoco de Mora, MEX - Zacatepec, PUE
+|Carretera-Federal-138|Cuernavaca, MOR - Cuautla, MOR
+|Carretera-Federal-140|Acatzingo, PUE - Cardel, VER
+|Carretera-Federal-142|Ecatepec de Morelos, MEX - Texcoco, MEX
+|Carretera-Federal-143|Fortin, VER - Coscomatepec, VER
+|Carretera-Federal-144|San Salvador el Seco, PUE - Tehuacán, PUE
+|Carretera-Federal-145|La Tinaja, VER - Sayula, VER.
+|Carretera-Federal-147|Tuxtepec, OAX - Matías Romero, OAX
+|Carretera-Federal-150|México, D. F. - Veracruz, VER
+|Carretera-Federal-160|Cuautla, MOR - Izúcar de Matamoros, PUE
+|Carretera-Federal-166|Grutas de Cacahuamilpa, GRO - Alpuyeca, MOR
+|Carretera-Federal-175|Carretera-Federal-180, VER - Puerto Ángel, OAX
+|Carretera-Federal-176|Mérida, YUC - Tizimín, YUC
+|Carretera-Federal-178|Mérida, YUC - Dzilam González, YUC
+|Carretera-Federal-179|Santiago Tuxtla, VER - Carretera-Federal-147, VER
+|Carretera-Federal-180|Carretera-Federal-180|Carretera Costera del Golfo|Heroica Matamoros, Tamaulipas - Cancún, QR
+|Carretera-Federal-180D|Autopista Mérida-Cancún|Kantunil, YUC - Cancún, QR
+|Carretera-Federal-182|Teotitlán del Camino, Oaxaca - Tuxtepec, OAX
+|Carretera-Federal-184|Oxkutzcab, YUC - Felipe Carrillo Puerto
+|Carretera-Federal-185|Carretera transístmica|Acayucan, VER - Salina Cruz, Oaxaca
+Carretera-Federal-186|Carretera-Federal-186|Villahermosa, TAB - Chetumal, QR
+|Carretera-Federal-187|Paraíso, TAB - Raudales Malpaso, CHIS
+|Carretera-Federal-188|Muna, Yucatan - Oxkutzcab, Yucatán
+|Carretera-Federal-190|México, DF - Ciudad Cuauhtémoc, CHIS
+|Carretera-Federal-193|Carretera-Federal-190, CHIS - Carretera-Federal-200, CHIS
+|Carretera-Federal-195|Villahermosa, TAB - Tuxtla Gutiérrez, CHIS
+|Carretera-Federal-199|Catazajá, CHIS - San Cristóbal de Las Casas, CHIS
+|Carretera-Federal-200|Carretera Costera|Tepic, Nayarit - Talismán, CHIS
+|Carretera-Federal-203|Carretera-Federal-186, CHIS - Tenosique, TAB
+|Carretera-Federal-211|Ciudad Cuauhtémoc, CHIS - Huixtla, CHIS
+|Carretera-Federal-221|Carretera-Federal-186, CAMP - Nuevo Coahuila, CAMP
+|Carretera-Federal-225|Tapachula, CHIS - Puerto Madero, CHIS
+Federal 259|Carretera-Federal-259|Sabancuy, CAMP - Nuevo Progreso, Campeche, CAMP
+Federal 261|Carretera-Federal-261|Progreso, YUC - Escárcega, CAMP
+|Carretera-Federal-281|Celestún, YUC - Mérida, Yucatán
+Carretera-Federal-293|Carretera-Federal-293|Polyuc, QR - Pedro Antonio Santos, QR
+Federal 295|Carretera-Federal-295|Valladolid, YUC - Tizimín, Yucatán
+Carretera-Federal-307|Carretera-Federal-307|Cancún, QR - Chetumal, QR; Palenque, CHIS - La Trinitaria, CHIS
