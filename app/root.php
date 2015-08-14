@@ -60,6 +60,7 @@
 class app_root extends app_data  {
     
     public $block;
+    public $css;
     
     public function __construct() {
      
@@ -80,15 +81,17 @@ class app_root extends app_data  {
  
           echo $this->action;
           
+          
           var_dump($this->get_html('object')->_head);
          
           include('./block/html/html.php');
           
           include('./block/html/css.php');
           
-          $this->block=new block_html_css();
-          $this->block=new block_html_html();
+          eval('$this->css=new block_html_css();');
+          eval('$this->block=new block_html_html();');
          
+          var_dump($this->get_html('array'));
  
     }
     
