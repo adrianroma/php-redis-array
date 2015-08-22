@@ -10,12 +10,21 @@
         <?php
         
         echo $this->Show();
+        echo "<br>";
+        echo $this->set_js();
+        echo "<br>";
         
-        var_dump($this->get_address()->get_users('object')->_owner);//->get_host();
+        $theme = $this->get_template('object')->default;
+        
+        var_dump((array)$theme);
+       
+        
+     
+       // var_dump($this->get_address()->get_users('object')->_owner);//->get_host();
 
 //var_dump($web->get_address()->get_users('array'));//->get_host();
 
-var_dump((array)$this->get_address('object')->_users->_invitates);//->get_host();
+//var_dump((array)$this->get_address('object')->_users->_invitates);//->get_host();
 
 //var_dump($web->get_users('array'));//->get_host();
 
@@ -27,10 +36,10 @@ echo "<br>";
 
 //echo $web->get_address()->get_box();
 
-var_dump($this->methods);
+//var_dump($this->methods);
 
 
-var_dump($this->current);
+//var_dump($this->current);
         ?>
     </body>
 </html>

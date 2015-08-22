@@ -142,12 +142,10 @@ class app_core {
             $urlstring = substr($urlstring, 1);
             
             if ($urlstring == '') {
-                echo 'URL: '.$urlstring;
-                echo "<br>";
+         
                 $urlstring = 'default';
             }
-            echo $urlstring;
-            echo "<br>";
+         
             $this->action = $urlstring;
             
             if($urlstring=='admin'){
@@ -161,9 +159,7 @@ class app_core {
         } else {
             $urlstring = $this->action;
         }
-        
-
-        
+  
         return $urlstring;
     }
 

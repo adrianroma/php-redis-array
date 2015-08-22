@@ -63,6 +63,8 @@ class app_data extends app_core {
     public $db;
     public $DB;
     public $object;
+    public $numeric;
+    public $history;
     public $current = array();
     public $methods = array();
     
@@ -140,13 +142,17 @@ class app_data extends app_core {
               $redis =$this->db;
               $object = array();
               if($redis->exists($keyRedis)){
-              
+                $type = $redis->type($keyRedis);
+               if($type=='hash'){
                 $obj = $redis->hgetall($keyRedis);
                 if(is_array($obj)){
                     foreach($obj as $ky=>$ob){
   
                         $kj = $keyRedis.'.'.$ky;         
                         if($redis->exists($kj)){
+                            $_type = $redis->type($kj);
+                           
+                           if($_type=='hash'){ 
                            $sob = $redis->hgetall($kj);
                         foreach($sob as $k=>$sb){
                                 $kr = $keyRedis.'.'.$ky.'.'.$k;
@@ -156,8 +162,27 @@ class app_data extends app_core {
                             }else{
                                 $sob[$k]=$sb;
                             }
-                        }   
+                        }  
+                        
                             $object[$ky] = $sob;                              
+                           }else{
+                              $_longList = $redis->llen($kj);
+                              
+                              $_obj = $redis->lrange($kj,0,$_longList);
+                              
+                              foreach($_obj as $k=>$sb){
+                                  $kr = $keyRedis.'.'.$ky.'.'.$k;
+                                 if($redis->exists($kr)){                             
+                                 $subObject = $this->getData($kr);
+                                 $_obj[$k] = $subObject;
+                                 }else{
+                                 $_obj[$k]=$sb;
+                                 }                                  
+                                  
+                              }
+                            $object[$ky] = $_obj;  
+                           }
+                            
                         }else{
                             $object[$ky] = $ob;
                         }
@@ -165,6 +190,62 @@ class app_data extends app_core {
                 }  
        
                return $object; 
+               }else{
+                   
+                  $longList = $redis->llen($keyRedis);
+                   
+                  $obj = $redis->lrange($keyRedis,0,$longList); 
+                  
+                  foreach($obj as $ky=>$ob){
+  
+                        $kj = $keyRedis.'.'.$ky;         
+                      
+                        if($redis->exists($kj)){
+                            
+                           $_type = $redis->type($kj);
+                           
+                           if($_type=='hash'){ 
+                           $sob = $redis->hgetall($kj);
+                        foreach($sob as $k=>$sb){
+                                $kr = $keyRedis.'.'.$ky.'.'.$k;
+                            if($redis->exists($kr)){                             
+                                $subObject = $this->getData($kr);
+                                
+                                $sob[$k] = $subObject;
+                            }else{
+                                $sob[$k]=$sb;
+                            }
+                        }   
+                           
+                            $object[$ky] = $sob;                              
+                           }else{
+                              $_longList = $redis->llen($kj);
+                              
+                              $_obj = $redis->lrange($kj,0,$_longList);
+                             
+                              foreach($_obj as $k=>$sb){
+                                  $kr = $keyRedis.'.'.$ky.'.'.$k;
+                                 if($redis->exists($kr)){                             
+                                 $subObject = $this->getData($kr);
+                                 
+                                 $_obj[$k] = $subObject;
+                                 }else{
+                                 $_obj[$k]=$sb;
+                                 }                                  
+                                  
+                              }
+                            $object[$ky] = $_obj;  
+                           }
+                            
+                            
+                        }else{                        
+                            $object[$ky] = $ob;
+                        }
+                        
+                    }
+                   
+               return $object;    
+               }
               }else{
                  
                return $object;    
@@ -172,31 +253,50 @@ class app_data extends app_core {
     }
     
     public function Magic($KEY,$object){
+                        
+                         
                          $String = '(object)[';
-                       foreach($object as $key=>$values){
+      foreach($object as $key=>$values){
+           
+                            if(is_numeric($key)){
+                                
+                                 //var_dump($this->history);
+                                 $key=$key;
+                            }
+                           
                              
                             if(!is_array($values)){
                              $_key = $key;
-                             $key ='_'.$key; 
+                             //$key ='_'.$key; 
                              
                              $String .='"'.$key.'"=>"'.$values.'",';  
                              $this->methods['get'.$key]='get'.$key;
-                             eval('$this->get'.$key.' = function ($parent="") {  $this->current["'.$key.'"]="'.$KEY.'"; $this->object="'.$values.'"; return "'.$values.'";  };');
+                             eval('$this->get_'.$key.' = function ($parent="") {  $this->current["'.$key.'"]="'.$KEY.'"; $this->object="'.$values.'"; return "'.$values.'";  };');
+                             eval('$this->set_'.$key.' = function(){ $redis = $this->db; echo "'.$KEY.'.'.$key.'";  };');
                             }else{
                           
                              $objectString = $this->Magic($key,$values); 
                              $_key = $key;
-                             $key ='_'.$key;                            
-                             $this->methods['get'.$key]='get'.$key;                        
-                             eval('$this->get'.$key.' = function ($parent="") {  $this->current["'.$_key.'"]="'.$KEY.'"; $this->object='.$objectString.'; if($parent==""){return $this;}elseif($parent=="object"){ return (object)$this->object;}else{ return (array)$this->object;}};');                              
+                             
+                      
+                             
+                             //$key ='_'.$key;                            
+                             $this->methods['get'.$key]='get'.$key; 
+                             
+                             $objectString = str_replace(array(']"'),array('],"'),$objectString);
+                       
+                             eval('$this->get_'.$key.' = function ($parent="") {  $this->current["'.$_key.'"]="'.$KEY.'"; $this->object='.$objectString.'; if($parent==""){return $this;}elseif($parent=="object"){ return (object)$this->object;}else{ return (array)'.$objectString.';}};');                              
+                             eval('$this->set_'.$key.' = function(){ $redis = $this->db;  echo "'.$KEY.'.'.$key.'";  };');
                              $String .= '"'.$key.'"=>'.$objectString;                              
                              $String  = str_replace(array(",(object)","](object)",']"'),array(",","],",'],"'),$String);                              
-                         }  
+                         }
+                        
                          
                       }
                       $String .=']'; 
                       $String = str_replace(',]',']',$String);
       
+      $this->history=$KEY.'';                
       return $String;
     }
     

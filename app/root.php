@@ -61,6 +61,8 @@ class app_root extends app_data  {
     
     public $block;
     public $css;
+    public $js;
+    public $restObject;
     
     public function __construct() {
      
@@ -69,11 +71,21 @@ class app_root extends app_data  {
       
       $key = $this->Action();
 
-      $objectData =$this->getData($key);
+      $objectData = $this->getData($key);
 
+   
+      
+      $this->restObject = $objectData;
+      
+     
+      
       $this->Magic($key,$objectData);
       
+      if(!$this->isRest){      
       $this->toHTML();
+      }else{
+      $this->toREST();    
+      }
         
     }
     
@@ -81,22 +93,25 @@ class app_root extends app_data  {
  
           echo $this->action;
           
+          $theme = $this->get_theme('array');
+
+          echo "FF";var_dump($theme['default']);
           
-          var_dump($this->get_html('object')->_head);
-         
-          include('./block/html/html.php');
-          
+          //var_dump($this->get_html('object')->_head);      
+          include('./block/html/html.php');         
           include('./block/html/css.php');
           
           eval('$this->css=new block_html_css();');
           eval('$this->block=new block_html_html();');
          
-          var_dump($this->get_html('array'));
+          var_dump($this->get_template('array'));
  
     }
     
     public function toREST(){
         
+         
+          include('./theme/default/rest/rest.php');
         
     }
     
