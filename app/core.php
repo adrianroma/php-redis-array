@@ -1,74 +1,19 @@
 <?php
 
-/**
- *   PengoStores
- * 
- *   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM8=~==~~~===7MMMMMMMMMMMMMMMMM
- *   MMMMMMMMMMMMMMMMMMMMMMMMMMO~~~~~~~~~~~~~~~~~~~MMMMMMMMMMMMMM
- *   MMMMMMMMMMMMMMMMMMMMMM=~=~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMMMMMM
- *   MMMMMMMMMMMMMMMMM8==~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMMMM
- *   MMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=MMMMMM~MMMMMMMMM
- *   MMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~===MMMMMMMM=~~~~MMMMMMMM
- *   MMMMMMMMM=~~~~~~~~~~~~~~~~=~+7MMMMMMMMMMM$?M+=~~~~~~=MMMMMMM
- *   MMMMMMM?~~~~~~~~~~=MMMMMMMMMMMMMMMMMM???MD~~~~~~~~~~~=MMMMMM
- *   MMMMMM=~~~~~~~~~=MMMMMMMMMMMMMMMMM???IMM=~~~~~~~~~~~~~MMMMNM
- *   MMMMM=~~~~~~~~~7MMMMMMMMMM,.?MMM??OMMM=~~~~~~~~~~~~~~~+MMMMM
- *   MMMMZ~~~~~~~~~MMMMMMMMMMMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~MMMMM
- *   MMMM~~~~~~~~~MMMMMMMMMMMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~MMMMM
- *   MMMM~~~~~~~=MMMMMMMMMMMMMMMMMMMMMMM~=~~~~~~~~~~~~~~~~~~MMMMM
- *   MMM8~~~~~~~NMMMM++MMMMMMMMMMMMMMMM=~~~~~~~~~~~~~~~~~~~~7MMMM
- *   MMM7~~~~~~~MMM++++=MMMMMMMMMMMMMM=~~~~~~~~~~~~~~~~~~~~~?MMMM
- *   MMMZ~~~~~=MMM?+++==MMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~?MMMM
- *   MMMM~~~~~~MM??++====MMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~$MMMM
- *   MMMM~~~~~MM?+++===~~~MMMMMMMMMMMMM~=~~~~~~~~~~~~~~~~~~~MMMMM
- *   MMMM+~~~~MM?+~.....:~:8MMMMM~...OMM~~~~~~~~~~~~~~~~~~~~MMMMM
- *   DMMMM=~~~M=....... DMN   . ......MMM=~~~~~~~~~~~~~~~~~~MMMMM
- *   MMMMMM~~=MM.....MMMMMMMMN ........MM=~~~~~~~~~~~~~~~~~$MMMMM
- *   MMMMMM7~~MMM...MMMMMMMMMMM~ . . . .MM~~~~~~~~~~~~~~~~=MMMMMM
- *   MMMMMMM7~MMMMMMMMMMMMMMMMMMM. . .   MM=~~~~~~~~~~~~=~MMMMMMM
- *   MMMMMMMMOMMMMMMMMMMMMMMMMMMMM . .   .MM~~~~~~~~~~~~7MMMMMMMM
- *   MMMMMMMMMMMMMMMMMMMMMMMMMMMMM=.......,MM~~~~~~~~~=MMMMMMMMMM
- *   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM. .    .,MM=~~~~=MMMMMMMMMMMMM
- *   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM. .   ...MMM=~=MMMMMMMMMMMMMMM
- *   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM..........MMMMMMMMMMMMMMMMMMMM
- *   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM.........IMMMMMMMMMMMMMMMMMMMM
- *   MMMMMMMMMMMMMMMMMMMMMMMMMMMMM.......MMMMMMMMMMMMMMMMMMMMMMMM
- *   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
- * 
- * NOTICE OF LICENSE
- *
- * This source file is subject to the PengoStores License
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://www.pengostores.com/license/
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@pengostores.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Edit or add to this file under your own risk.
- * PengoStores will not provide  support to any developed extension
- * which has been modified after its official release.
- *
- * @author Adrian Romero <adrian@pengostores.com>
- * @package  Pengo 
- * @category Pengo_
- * @license  http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- * 
- */
 
-require ('./lib/redis/Autoloader.php');
+require ('./lib/helper/general.php');
 
 class app_core {
 
     public $hash;
     public $action;
     public $isRest;
-    public $clearURL;
-    public $parameters;
-    public $longParameters;
+    public $lastUrl;
+    public $parameters=array();
+    public $longParameters=array();
     public $ip;
+    public $session;
+    public $baseURL;
  
  
         public function __construct($string = '0000000') {
@@ -100,10 +45,30 @@ class app_core {
     public function curPageURL($type = '') {
         if ($type == 'full') {
             $pageURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        } else {
+        } elseif($type == 'request') {
+            $pageURL = $_SERVER[REQUEST_URI];
+        }else{
             $pageURL = "http://$_SERVER[HTTP_HOST]/";
         }
         return $pageURL;
+    }
+    
+    public function checkPageURL($word){
+        
+        
+        if (strpos($this->action,$word) !== false) {
+            
+               if($this->action==$word){
+                 return 1;  
+               }else{
+                 return 2;  
+               }
+            
+        }else{
+            return 0;
+        }
+        
+        
     }
     
         /*
@@ -113,9 +78,13 @@ class app_core {
      */
 
     public function Action() {
+         
+        $this->ip = $this->getIpClient();
 
         if ($this->action == '') {
+          
             $urlstring = $_SERVER['REQUEST_URI'];
+       
             if (strpos($urlstring, '?type=rest') !== false) {
                 $this->isRest = 1;
             } else {
@@ -129,10 +98,13 @@ class app_core {
                 $parameterFull = explode('&', $fullURL[1]);
                 foreach ($parameterFull as $key => $parameter) {
                     if (strpos($parameter, '=') !== false) {
+                        
                         $parameterData = explode('=', $parameter);
+                        
                         $this->parameters[$parameterData[0]] = $parameterData[1];
                     } else {
-                        $this->longParameter[$key] = $parameter;
+                       
+                        $this->longParameters[$key] = $parameter;
                     }
                 }
             } else {
@@ -143,7 +115,7 @@ class app_core {
             
             if ($urlstring == '') {
          
-                $urlstring = 'default';
+                $urlstring = '/';
             }
          
             $this->action = $urlstring;
@@ -154,9 +126,17 @@ class app_core {
                 $_SESSION['privilege'] = 'default';
                 $_SESSION['area'] = 'default';
                 $_SESSION['history'] = 'home,admin';
+            }else{
+                session_start();
+                $_SESSION['user'] = 'default';
+                $_SESSION['privilege'] = 'default';
+                $_SESSION['area'] = 'default';
+                $_SESSION['history'] = 'default';
             }
+           
 
         } else {
+            
             $urlstring = $this->action;
         }
   
@@ -180,6 +160,31 @@ class app_core {
         }
         return $this->ip;
     }
+    
+    
+    function Redirect($url, $permanent = false)
+    {
+    if (headers_sent() === false)
+    {
+    	header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
+    }
+
+    exit();
+    }
+    
+    
+    function getLastUrl(){
+        
+        return $_SERVER['HTTP_REFERER'];
+        
+    }
+    
+    
+    public function info(){
+        
+        return "INFO";
+    }
 
 }
+
 
