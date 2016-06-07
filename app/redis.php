@@ -4,7 +4,7 @@
 require ('./lib/redis/Autoloader.php');
 
 
-class app_redis extends app_core {
+class app_redis {
     
     public $db;
     public $object;
@@ -14,7 +14,6 @@ class app_redis extends app_core {
     public $methods = array();
     public $set = array();
     public $message = '';
-    public $helper;
     public $redisActive = FALSE;
     public $toLook = array();
     
@@ -26,9 +25,8 @@ class app_redis extends app_core {
      * 
      */
     
-    public function __construct(app_core $data,general $helper) {
-        $this->object=$data;
-        $this->helper=$helper;
+    public function __construct() {
+   
         $keyhash = md5($data->hash);
         $this->hash = $keyhash;
         
@@ -68,7 +66,7 @@ class app_redis extends app_core {
                 $redis = new Predis\Client(array('host' => parse_url($_ENV['REDISCLOUD_URL'], PHP_URL_HOST), 'port' => parse_url($_ENV['REDISCLOUD_URL'], PHP_URL_PORT), 'password' => parse_url($_ENV['REDISCLOUD_URL'], PHP_URL_PASS)));
                 $this->db = $redis;
 
-                $redis->client('setname', 'veterinarica');
+                $redis->client('setname', 'guest');
                 $this->nameConection = $redis->client('getname');
                 
 		
@@ -102,9 +100,8 @@ class app_redis extends app_core {
                         } catch (Exception $e) {
                           
                             
-                             $error = $e->getMessage();
-                             
-                        $this->helper->toLog($error);
+                        $error = $e->getMessage();
+                    
                         $this->redisActive= FALSE;     
                         return FALSE;
                             
@@ -346,26 +343,7 @@ class app_redis extends app_core {
         
     }
     
-    
-  
-    
-    
-    
-    /*
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
-    public function setTranslate($word,$translate,$language='english'){
-        
-        
-        
-    }
-    
-   
-    
+
     
     /*
      * Translate languages, Use default english 
