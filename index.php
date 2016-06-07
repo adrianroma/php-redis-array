@@ -21,7 +21,7 @@ foreach (glob("./*/*.php") as $filename)
 $web = new app_root();
 
 
-
+echo "hello";
 
 
 ?>
