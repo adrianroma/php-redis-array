@@ -1,7 +1,10 @@
 language: php
 sudo: false
+services:
+  - docker
 php:
-   -'5.4'
-
+  - 5.4
+  - 5.5
+  
 script: php key.php
 
