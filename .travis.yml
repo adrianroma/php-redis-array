@@ -3,5 +3,5 @@ sudo: false
 php:
    -'5.4'
 
-
+script: php key.php
 
